@@ -245,54 +245,54 @@ public class comienzo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-     jPanel5.setBackground(new Color(51,102,255));
-     new usuario().setVisible(true);
-    }//GEN-LAST:event_jPanel5MouseClicked
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-     jPanel5.setBackground(new Color(51,51,225)); 
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
-     jPanel6.setBackground(new Color(51,102,255));
-    }//GEN-LAST:event_jPanel6MouseClicked
-
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-     jPanel6.setBackground(new Color(51,51,255));
-    }//GEN-LAST:event_jPanel6MouseEntered
-
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-     jPanel6.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_jPanel6MouseExited
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-     jPanel5.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_jPanel5MouseExited
-
-    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
-    jPanel7.setBackground(new Color(51,102,255));
-    }//GEN-LAST:event_jPanel7MouseClicked
-
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-    jPanel7.setBackground(new Color(51,51,255));
-    }//GEN-LAST:event_jPanel7MouseEntered
-
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-    jPanel7.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_jPanel7MouseExited
-
-    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
-    jPanel8.setBackground(new Color(51,102,255));
-    }//GEN-LAST:event_jPanel8MouseClicked
+    private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
+        jPanel8.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jPanel8MouseExited
 
     private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseEntered
-    jPanel8.setBackground(new Color(51,51,255));
+        jPanel8.setBackground(new Color(51,51,255));
     }//GEN-LAST:event_jPanel8MouseEntered
 
-    private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
-    jPanel8.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_jPanel8MouseExited
+    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        jPanel8.setBackground(new Color(51,102,255));
+    }//GEN-LAST:event_jPanel8MouseClicked
+
+    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
+        jPanel7.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jPanel7MouseExited
+
+    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
+        jPanel7.setBackground(new Color(51,51,255));
+    }//GEN-LAST:event_jPanel7MouseEntered
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        jPanel7.setBackground(new Color(51,102,255));
+    }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+        jPanel6.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jPanel6MouseExited
+
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        jPanel6.setBackground(new Color(51,51,255));
+    }//GEN-LAST:event_jPanel6MouseEntered
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        jPanel6.setBackground(new Color(51,102,255));
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+        jPanel5.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setBackground(new Color(51,51,225));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        jPanel5.setBackground(new Color(51,102,255));
+        new usuario().setVisible(true);
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     /**
      * @param args the command line arguments
