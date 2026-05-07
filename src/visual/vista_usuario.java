@@ -63,7 +63,7 @@ public class vista_usuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
+        B_agendar_cita_3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -72,7 +72,7 @@ public class vista_usuario extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         jList4 = new javax.swing.JList<>();
-        jButton3 = new javax.swing.JButton();
+        B_agendar_cita_4 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -316,8 +316,19 @@ public class vista_usuario extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jList3);
 
-        jButton2.setText("AGENDAR CITA");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        B_agendar_cita_3.setText("AGENDAR CITA");
+        B_agendar_cita_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_3MouseExited(evt);
+            }
+        });
+        B_agendar_cita_3.addActionListener(this::B_agendar_cita_3ActionPerformed);
 
         jLabel13.setText("jLabel13");
 
@@ -335,7 +346,7 @@ public class vista_usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(B_agendar_cita_3)
                         .addGap(95, 95, 95)))
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -365,7 +376,7 @@ public class vista_usuario extends javax.swing.JFrame {
                 .addGap(102, 102, 102)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(B_agendar_cita_3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addGap(27, 27, 27))
@@ -390,8 +401,19 @@ public class vista_usuario extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(jList4);
 
-        jButton3.setText("AGENDAR CITA");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
+        B_agendar_cita_4.setText("AGENDAR CITA");
+        B_agendar_cita_4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                B_agendar_cita_4MouseExited(evt);
+            }
+        });
+        B_agendar_cita_4.addActionListener(this::B_agendar_cita_4ActionPerformed);
 
         jLabel12.setText("jLabel12");
 
@@ -415,8 +437,8 @@ public class vista_usuario extends javax.swing.JFrame {
                                 .addGap(53, 53, 53))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton3)
-                                .addGap(103, 103, 103)))
+                                .addComponent(B_agendar_cita_4)
+                                .addGap(119, 119, 119)))
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(268, 268, 268)
@@ -436,7 +458,7 @@ public class vista_usuario extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(jButton3))
+                        .addComponent(B_agendar_cita_4))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(jLabel10)))
@@ -483,13 +505,13 @@ public class vista_usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_B_agendar_cita_2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void B_agendar_cita_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_cita_3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_B_agendar_cita_3ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void B_agendar_cita_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_cita_4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_B_agendar_cita_4ActionPerformed
 
     private void B_agendar_cita_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_2MouseClicked
       B_agendar_cita_2.setBackground(new Color(51,102,255));
@@ -502,6 +524,30 @@ public class vista_usuario extends javax.swing.JFrame {
     private void B_agendar_cita_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_2MouseExited
       B_agendar_cita_2.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_B_agendar_cita_2MouseExited
+
+    private void B_agendar_cita_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_3MouseClicked
+     B_agendar_cita_3.setBackground(new Color(51,102,255)); 
+    }//GEN-LAST:event_B_agendar_cita_3MouseClicked
+
+    private void B_agendar_cita_3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_3MouseEntered
+     B_agendar_cita_3.setBackground(new Color(51,51,225));
+    }//GEN-LAST:event_B_agendar_cita_3MouseEntered
+
+    private void B_agendar_cita_3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_3MouseExited
+     B_agendar_cita_3.setBackground(new Color(255,255,255)); 
+    }//GEN-LAST:event_B_agendar_cita_3MouseExited
+
+    private void B_agendar_cita_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_4MouseClicked
+     B_agendar_cita_3.setBackground(new Color(51,102,255)); 
+    }//GEN-LAST:event_B_agendar_cita_4MouseClicked
+
+    private void B_agendar_cita_4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_4MouseEntered
+     B_agendar_cita_3.setBackground(new Color(51,51,225));
+    }//GEN-LAST:event_B_agendar_cita_4MouseEntered
+
+    private void B_agendar_cita_4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_agendar_cita_4MouseExited
+     B_agendar_cita_3.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_B_agendar_cita_4MouseExited
 
     /**
      * @param args the command line arguments
@@ -531,8 +577,8 @@ public class vista_usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton B_agendar_cita;
     private javax.swing.JButton B_agendar_cita_2;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton B_agendar_cita_3;
+    private javax.swing.JButton B_agendar_cita_4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
