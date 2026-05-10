@@ -106,7 +106,8 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2PropertyChange
 
     private void B_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_registroActionPerformed
-        // TODO add your handling code here:
+     
+        new comienzo().setVisible(true);      
     }//GEN-LAST:event_B_registroActionPerformed
 
     /**

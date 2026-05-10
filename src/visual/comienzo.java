@@ -127,6 +127,11 @@ public class comienzo extends javax.swing.JFrame {
         });
 
         jLabel4.setText("FARMACEUTICO");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -293,6 +298,10 @@ public class comienzo extends javax.swing.JFrame {
         jPanel5.setBackground(new Color(51,102,255));
         new usuario().setVisible(true);
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+     new farmaceuta().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
