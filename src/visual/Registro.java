@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visual;
-
+import main.*;
+import objetos.*;
 /**
  *
  * @author YARITZA
@@ -11,7 +12,7 @@ package visual;
 public class Registro extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Registro.class.getName());
-
+      private Funciones a;
     /**
      * Creates new form Registro
      */
@@ -39,9 +40,11 @@ public class Registro extends javax.swing.JFrame {
         tx_cedula = new javax.swing.JTextField();
         B_registro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        error_registro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
@@ -62,18 +65,18 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Nombre");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 50, 30));
-        jPanel1.add(tx_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 220, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 50, 30));
+        jPanel1.add(tx_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 220, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("Edad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 50, 30));
-        jPanel1.add(tx_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 50, 30));
+        jPanel1.add(tx_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 220, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Cedula");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 50, 30));
-        jPanel1.add(tx_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 220, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 50, 30));
+        jPanel1.add(tx_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 220, 30));
 
         B_registro.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         B_registro.setText("Registrar");
@@ -82,10 +85,11 @@ public class Registro extends javax.swing.JFrame {
                 B_registroActionPerformed(evt);
             }
         });
-        jPanel1.add(B_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 130, 30));
+        jPanel1.add(B_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 130, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cruz.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 430, 390));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 340, 390));
+        jPanel1.add(error_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 180, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,16 +106,25 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel2PropertyChange
-        // TODO add your handling code here:
+        // TODO add your handling code here
     }//GEN-LAST:event_jPanel2PropertyChange
 
     private void B_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_registroActionPerformed
-<<<<<<< HEAD
-     
-        new comienzo().setVisible(true);      
-=======
-    new usuario().setVisible(true);
->>>>>>> 1c2ba954620707eb47421c58ac249e9c9fd8d411
+
+      String nombre = tx_nombre.getText();
+        int edad = Integer.parseInt(tx_edad.getText());
+        String vedad = tx_edad.getText();
+      String cedula = tx_cedula.getText();
+      if (nombre.isEmpty() && vedad.isEmpty() && cedula.isEmpty()) {
+          error_registro.setText(""); 
+      
+    
+    }else{
+            a.registrarPaciente(new Paciente(cedula,nombre,edad));
+            }
+      
+      
+    new comienzo().setVisible(true);      
     }//GEN-LAST:event_B_registroActionPerformed
 
     /**
@@ -134,13 +147,14 @@ public class Registro extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+         Funciones f = new Funciones();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Registro().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_registro;
+    private javax.swing.JLabel error_registro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

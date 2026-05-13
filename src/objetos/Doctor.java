@@ -3,9 +3,22 @@ package objetos;
 import objetos.Persona;
 
 public class Doctor extends Persona {
-    public Doctor(String cedula, String nombre, int edad) {
+    String tipo;
+
+    public Doctor(String tipo, String cedula, String nombre, int edad) {
         super(cedula, nombre, edad);
+        this.tipo = tipo;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     public String getCedula() {
         return cedula;
