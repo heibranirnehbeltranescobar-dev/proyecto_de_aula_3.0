@@ -4,13 +4,13 @@ public class Receta {
     private String idReceta;
     private String cedulaPaciente;
     private String nombreDoctor;
-    private String listaMedicamentos;
+    private String NombreMedicamentos;
 
-    public Receta(String idReceta, String cedulaPaciente, String nombreDoctor, String listaMedicamentos) {
+    public Receta(String idReceta, String cedulaPaciente, String nombreDoctor, String NombreMedicamentos) {
         this.idReceta = idReceta;
         this.cedulaPaciente = cedulaPaciente;
         this.nombreDoctor = nombreDoctor;
-        this.listaMedicamentos = listaMedicamentos;
+        this.NombreMedicamentos = NombreMedicamentos;
     }
 
     public String getIdReceta() {
@@ -37,17 +37,17 @@ public class Receta {
         this.nombreDoctor = nombreDoctor;
     }
 
-    public String getListaMedicamentos() {
-        return listaMedicamentos;
+    public String getNombreMedicamentos() {
+        return NombreMedicamentos;
     }
 
-    public void setListaMedicamentos(String listaMedicamentos) {
-        this.listaMedicamentos = listaMedicamentos;
+    public void setNombreMedicamentos(String NombreMedicamentos) {
+        this.NombreMedicamentos = NombreMedicamentos;
     }
 
     
-
+    
     public String toLineaTexto() {
-        return idReceta + ";" + cedulaPaciente + ";" + nombreDoctor + ";" + listaMedicamentos;
+        return idReceta + ";" + cedulaPaciente + ";" + nombreDoctor + ";" + NombreMedicamentos;
     }
 }
