@@ -39,14 +39,14 @@ public class Funciones {
 
     private void sembrarDatosBase() {
         // Cedulas numericas como solicito el usuario
-        registrarPaciente(new Paciente("101", "Paciente Uno", 25));
-        registrarPaciente(new Paciente("102", "Paciente Dos", 30));
-        registrarPaciente(new Paciente("103", "Paciente Tres", 45));
+        registrarPaciente(new Paciente("1012020321", "juan pertuz", 25));
+        registrarPaciente(new Paciente("102927342", "manolo melano", 30));
+        registrarPaciente(new Paciente("103153756", "kateryn trusova", 45));
 
-        registrarDoctor(new Doctor("201", "Doctor Alfa", 50));
-        registrarDoctor(new Doctor("202", "Doctor Beta", 40));
+        registrarDoctor(new Doctor("general","2014223", "julian carpenter", 50));
+        registrarDoctor(new Doctor("dermatologo","20212343", "cylen dawn", 40));
 
-        registrarFarmaceuta(new Farmaceuta("301", "Farmaceuta Gama", 35));
+        registrarFarmaceuta(new Farmaceuta("30112334", "maria maximilian", 35));
     }
 
     public void cargarDatos() {
@@ -71,6 +71,13 @@ public class Funciones {
         guardarPacientes();
     }
     public Paciente buscarPaciente(String cedula) {
+        for (int i = 0; i < pacientes.size(); i++) {
+            Paciente p = null;
+            if (pacientes.get(i).getCedula().equals(cedula)) 
+                p=pacientes.get(i);
+            return p;
+        }
+        
         for (Paciente p : pacientes) {
             if (p.getCedula().equals(cedula)) return p;
         }
