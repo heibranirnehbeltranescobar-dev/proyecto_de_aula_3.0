@@ -124,7 +124,8 @@ public class Registro extends javax.swing.JFrame {
             }
       
       
-    new comienzo().setVisible(true);      
+    new comienzo().setVisible(true); 
+    this.setVisible(false);
     }//GEN-LAST:event_B_registroActionPerformed
 
     /**
