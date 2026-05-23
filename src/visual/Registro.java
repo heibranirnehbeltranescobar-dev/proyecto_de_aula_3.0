@@ -143,17 +143,16 @@ public class Registro extends javax.swing.JFrame {
         a.registrarPaciente(new Paciente(cedula, nombre, edad));
 
         new comienzo().setVisible(true);
+        this.setVisible(false);
     }
       
 
     
-    }else{
-            a.registrarPaciente(new Paciente(cedula,nombre,edad));
-            }
+
       
       
-    new comienzo().setVisible(true);
-    this.setVisible(false);
+   
+    
 
     }//GEN-LAST:event_B_registroActionPerformed
 
