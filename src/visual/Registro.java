@@ -71,11 +71,23 @@ public class Registro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("Edad");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 50, 30));
+
+        tx_edad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tx_edadKeyTyped(evt);
+            }
+        });
         jPanel1.add(tx_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 220, 30));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Cedula");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 50, 30));
+
+        tx_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tx_cedulaKeyTyped(evt);
+            }
+        });
         jPanel1.add(tx_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 220, 30));
 
         B_registro.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -111,21 +123,53 @@ public class Registro extends javax.swing.JFrame {
 
     private void B_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_registroActionPerformed
 
-      String nombre = tx_nombre.getText();
-        int edad = Integer.parseInt(tx_edad.getText());
+        
+        String nombre = tx_nombre.getText();
         String vedad = tx_edad.getText();
-      String cedula = tx_cedula.getText();
-      if (nombre.isEmpty() && vedad.isEmpty() && cedula.isEmpty()) {
-          error_registro.setText(""); 
+        String cedula = tx_cedula.getText();
+        error_registro.setText("  ");
+    if (nombre.isEmpty() || vedad.isEmpty() || cedula.isEmpty()) {
+
+        error_registro.setText("Algun espacio esta en blanco");
+
+    } else if (cedula.length() < 8 || cedula.length() > 10) {
+
+        error_registro.setText("La cedula debe tener de 8 a 10 digitos");
+
+    } else {
+
+        int edad = Integer.parseInt(vedad);
+
+        a.registrarPaciente(new Paciente(cedula, nombre, edad));
+
+        new comienzo().setVisible(true);
+    }
       
-    
-    }else{
-            a.registrarPaciente(new Paciente(cedula,nombre,edad));
-            }
-      
-      
-    new comienzo().setVisible(true);      
+         
     }//GEN-LAST:event_B_registroActionPerformed
+
+    private void tx_edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx_edadKeyTyped
+ 
+        char c=evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            evt.consume();
+            javax.swing.JOptionPane.showMessageDialog(null,"Solo puede digitar numeros");
+            
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_edadKeyTyped
+
+    private void tx_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx_cedulaKeyTyped
+
+        char c=evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            evt.consume();
+            javax.swing.JOptionPane.showMessageDialog(null,"Solo puede digitar numeros");
+            
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cedulaKeyTyped
 
     /**
      * @param args the command line arguments
