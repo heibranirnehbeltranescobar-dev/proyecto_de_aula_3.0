@@ -465,6 +465,7 @@ public class vista_usuario extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        new usuario().setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

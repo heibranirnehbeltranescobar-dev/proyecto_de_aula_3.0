@@ -9,20 +9,17 @@ import objetos.*;
 
 public class Funciones {
     
-    private ArrayList<Paciente> pacientes;
-    private ArrayList<Doctor> doctores;
-    private ArrayList<Farmaceuta> farmaceutas;
-    private ArrayList<Receta> recetas;
-    private ArrayList<Consulta> consultas;
+     ArrayList<Paciente> pacientes = new ArrayList<>();
+     ArrayList<Doctor> doctores = new ArrayList<>();
+     ArrayList<Farmaceuta> farmaceutas = new ArrayList<>();
+     ArrayList<Receta> recetas = new ArrayList<>();
+     ArrayList<Consulta> consultas = new ArrayList<>();
+     ArrayList<medicamento> medicamentos = new ArrayList<>();
+     
 
     private static final String DIR_DATOS = "datos_hospital/";
 
     public  void SistemaHospital() {
-        pacientes = new ArrayList<>();
-        doctores = new ArrayList<>();
-        farmaceutas = new ArrayList<>();
-        recetas = new ArrayList<>();
-        consultas = new ArrayList<>();
         
         File dir = new File(DIR_DATOS);
         if (!dir.exists()) {
@@ -38,7 +35,7 @@ public class Funciones {
     }
 
     private void sembrarDatosBase() {
-        // Cedulas numericas como solicito el usuario
+ 
         registrarPaciente(new Paciente("1012020321", "juan pertuz", 25));
         registrarPaciente(new Paciente("102927342", "manolo melano", 30));
         registrarPaciente(new Paciente("103153756", "kateryn trusova", 45));
@@ -117,7 +114,7 @@ public class Funciones {
         for (String linea : lineas) {
             String[] partes = linea.split(";");
             if(partes.length >= 3) {
-                doctores.add(new Doctor(partes[0], partes[1], Integer.parseInt(partes[2])));
+                doctores.add(new Doctor(partes[0],partes[1], partes[2], Integer.parseInt(partes[3])));
             }
         }
     }
@@ -170,7 +167,7 @@ public class Funciones {
         for (String linea : lineas) {
             String[] partes = linea.split(";", -1); // -1 to keep empty trailing strings 
             if(partes.length >= 4) {
-                recetas.add(new Receta(partes[0], partes[1], partes[2], partes[3]));
+                recetas.add(new Receta(partes[0], partes[1], partes[2], partes[3],Integer.parseInt(partes[4]), partes[5],Integer.parseInt(partes[6]),partes[7],Integer.parseInt(partes[8])));
             }
         }
     }
@@ -250,6 +247,16 @@ public class Funciones {
         }
         return lineas;
     }
+    
+    //---inventario medicamento
+     public void registrarMedicamento(medicamento M) {
+        medicamentos.add(M);
+        guardarMedicamento();
+    }
+    private void guardarMedicamento() {
+        escribirArchivo(DIR_DATOS + "Medicamento.txt", medicamentos);
+    }
+    
     
     // Metodos generales getters
     public ArrayList<Paciente> getPacientes() { return pacientes; }

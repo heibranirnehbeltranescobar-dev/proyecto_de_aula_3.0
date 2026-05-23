@@ -11,12 +11,15 @@ package visual;
 public class farmaceuta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(farmaceuta.class.getName());
-
+    private javax.swing.DefaultListModel modeloMedicamentos;
     /**
      * Creates new form farmaceuta
      */
     public farmaceuta() {
         initComponents();
+         modeloMedicamentos = new javax.swing.DefaultListModel();
+
+    jList2.setModel(modeloMedicamentos);
     }
 
     /**
@@ -59,8 +62,10 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        p_inventario_f = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        p_entrega = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,18 +193,37 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Buscar usuario");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 7, 94, 29));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 94, 40));
 
-        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 130, 44));
+        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
 
-        jPanel6.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        p_inventario_f.setBackground(new java.awt.Color(204, 255, 255));
+        p_inventario_f.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        p_inventario_f.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_inventario_fMouseClicked(evt);
+            }
+        });
+        p_inventario_f.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("Inventario");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 60, 40));
+        p_inventario_f.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 60, 40));
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 40));
+        jPanel5.add(p_inventario_f, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 40));
+
+        p_entrega.setBackground(new java.awt.Color(204, 255, 255));
+        p_entrega.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        p_entrega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_entregaMouseClicked(evt);
+            }
+        });
+        p_entrega.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setText("entrega");
+        p_entrega.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 60, 40));
+
+        jPanel5.add(p_entrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 40));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 500));
 
@@ -228,6 +252,17 @@ public class farmaceuta extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void p_inventario_fMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_inventario_fMouseClicked
+       
+        
+        
+        
+    }//GEN-LAST:event_p_inventario_fMouseClicked
+
+    private void p_entregaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_entregaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_entregaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -261,6 +296,7 @@ public class farmaceuta extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -277,7 +313,6 @@ public class farmaceuta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -288,5 +323,7 @@ public class farmaceuta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel p_entrega;
+    private javax.swing.JPanel p_inventario_f;
     // End of variables declaration//GEN-END:variables
 }

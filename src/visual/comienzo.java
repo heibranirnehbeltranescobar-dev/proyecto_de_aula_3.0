@@ -329,6 +329,7 @@ public class comienzo extends javax.swing.JFrame {
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         jPanel5.setBackground(new Color(51,102,255));
         new usuario().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
