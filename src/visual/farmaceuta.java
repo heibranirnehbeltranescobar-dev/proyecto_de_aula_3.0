@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visual;
-
+import main.*;
+import objetos.*;
+import java.util.ArrayList;
 /**
  *
  * @author YARITZA
@@ -12,14 +14,20 @@ public class farmaceuta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(farmaceuta.class.getName());
     private javax.swing.DefaultListModel modeloMedicamentos;
+    private Funciones a = new Funciones();
+    private javax.swing.DefaultListModel modeloRecetas;
     /**
      * Creates new form farmaceuta
      */
     public farmaceuta() {
-        initComponents();
-         modeloMedicamentos = new javax.swing.DefaultListModel();
+         initComponents();
+        modeloMedicamentos = new javax.swing.DefaultListModel();
+        modeloRecetas = new javax.swing.DefaultListModel();
 
-    jList2.setModel(modeloMedicamentos);
+         jList2.setModel(modeloMedicamentos);
+         jList1.setModel(modeloRecetas);
+
+      a.cargarDatos();
     }
 
     /**
@@ -39,8 +47,8 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        boton_buscar_reseta = new javax.swing.JButton();
+        tx_idpaciente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -48,19 +56,21 @@ public class farmaceuta extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        tx_nombre_medicamento = new javax.swing.JTextField();
+        tx_cantidad_medicamento = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        boton_agregar_medicina = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tx_id_reseta = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        boton_entrega = new javax.swing.JButton();
+        boton_receta_especifica = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panel_buscar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         p_inventario_f = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -88,6 +98,11 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 100));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 100));
@@ -104,11 +119,16 @@ public class farmaceuta extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 357, 127));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar receta");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 367, -1, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 235, -1));
+        boton_buscar_reseta.setBackground(new java.awt.Color(0, 204, 255));
+        boton_buscar_reseta.setForeground(new java.awt.Color(255, 255, 255));
+        boton_buscar_reseta.setText("Buscar receta");
+        boton_buscar_reseta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_buscar_resetaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(boton_buscar_reseta, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 367, -1, -1));
+        jPanel4.add(tx_idpaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 235, -1));
 
         jLabel4.setText("Ingrese la cedula del paciente");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 171, -1));
@@ -136,25 +156,33 @@ public class farmaceuta extends javax.swing.JFrame {
         jLabel8.setText("Nombre del medicamento");
         jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 180, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tx_nombre_medicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tx_nombre_medicamentoActionPerformed(evt);
             }
         });
-        jPanel7.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 220, 30));
+        jPanel7.add(tx_nombre_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 220, 30));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tx_cantidad_medicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                tx_cantidad_medicamentoActionPerformed(evt);
             }
         });
-        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, 30));
+        jPanel7.add(tx_cantidad_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, 30));
 
         jLabel9.setText("Cantidad a agregar");
         jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 180, -1));
 
-        jButton2.setText("Agregar");
-        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 110, 30));
+        boton_agregar_medicina.setText("Agregar");
+        boton_agregar_medicina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_agregar_medicinaActionPerformed(evt);
+            }
+        });
+        jPanel7.add(boton_agregar_medicina, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 110, 30));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo del iventario farmaceuta.png"))); // NOI18N
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 560, 410));
 
         jTabbedPane2.addTab("tab2", jPanel7);
 
@@ -163,7 +191,7 @@ public class farmaceuta extends javax.swing.JFrame {
 
         jLabel10.setText("Ingrese el ID de la receta");
         jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 160, 20));
-        jPanel8.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, -1));
+        jPanel8.add(tx_id_reseta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 210, -1));
 
         jList3.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -174,11 +202,24 @@ public class farmaceuta extends javax.swing.JFrame {
 
         jPanel8.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 230, 320));
 
-        jButton3.setText("dar la receta");
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
+        boton_entrega.setText("dar la receta");
+        boton_entrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_entregaActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_entrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
 
-        jButton4.setText("ver la receta");
-        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        boton_receta_especifica.setText("ver la receta");
+        boton_receta_especifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_receta_especificaActionPerformed(evt);
+            }
+        });
+        jPanel8.add(boton_receta_especifica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_entrgar.png"))); // NOI18N
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 570, 410));
 
         jTabbedPane2.addTab("tab3", jPanel8);
 
@@ -188,14 +229,19 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_buscar.setBackground(new java.awt.Color(204, 255, 255));
+        panel_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_buscarMouseClicked(evt);
+            }
+        });
+        panel_buscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Buscar usuario");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 94, 40));
+        panel_buscar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 94, 40));
 
-        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
+        jPanel5.add(panel_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
 
         p_inventario_f.setBackground(new java.awt.Color(204, 255, 255));
         p_inventario_f.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -245,24 +291,379 @@ public class farmaceuta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel3PropertyChange
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tx_nombre_medicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_nombre_medicamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tx_nombre_medicamentoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tx_cantidad_medicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cantidad_medicamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tx_cantidad_medicamentoActionPerformed
 
     private void p_inventario_fMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_inventario_fMouseClicked
-       
+jTabbedPane2.setSelectedIndex(1);
+
+modeloMedicamentos.clear();
+
+for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+    medicamento m = a.getMedicamentos().get(i);
+
+    modeloMedicamentos.addElement(
+        m.getNombreMedicamento() + "  Cantidad: " + m.getCantMedicamento()
+    );
+}     jTabbedPane2.setSelectedIndex(1);       
         
         
         
     }//GEN-LAST:event_p_inventario_fMouseClicked
 
     private void p_entregaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_entregaMouseClicked
-        // TODO add your handling code here:
+         jTabbedPane2.setSelectedIndex(2); 
     }//GEN-LAST:event_p_entregaMouseClicked
+
+    private void boton_buscar_resetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscar_resetaActionPerformed
+String cedula = tx_idpaciente.getText();
+
+modeloRecetas.clear();
+
+ArrayList<Receta> recetasPaciente = a.obtenerRecetasPaciente(cedula);
+
+if(recetasPaciente.isEmpty()){
+
+    modeloRecetas.addElement("No se encontraron recetas");
+
+}else{
+
+    for(int i = 0; i < recetasPaciente.size(); i++){
+
+        Receta r = recetasPaciente.get(i);
+
+        modeloRecetas.addElement("ID receta: " + r.getIdReceta());
+
+        modeloRecetas.addElement("Paciente: " + r.getCedulaPaciente());
+
+        modeloRecetas.addElement("Doctor: " + r.getNombreDoctor());
+
+        modeloRecetas.addElement(
+            r.getMedicamento1() + 
+            "  Cantidad: " + 
+            r.getCantMedicamento1()
+        );
+
+        modeloRecetas.addElement(
+            r.getMedicamento2() + 
+            "  Cantidad: " + 
+            r.getCantMedicamento2()
+        );
+
+        modeloRecetas.addElement(
+            r.getMedicamento3() + 
+            "  Cantidad: " + 
+            r.getCantMedicamento3()
+        );
+
+        modeloRecetas.addElement("----------------------");
+    }
+}          
+        
+
+
+           // TODO add your handling code here:
+    }//GEN-LAST:event_boton_buscar_resetaActionPerformed
+
+    private void boton_entregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_entregaActionPerformed
+String idReceta = tx_id_reseta.getText();
+
+if(idReceta.isEmpty()){
+
+    javax.swing.JOptionPane.showMessageDialog(
+        null,
+        "Ingrese el ID de la receta"
+    );
+
+    return;
+}
+
+Receta recetaEncontrada = null;
+
+// BUSCAR RECETA
+for(int i = 0; i < a.getRecetas().size(); i++){
+
+    Receta r = a.getRecetas().get(i);
+
+    if(r.getIdReceta().equals(idReceta)){
+
+        recetaEncontrada = r;
+    }
+}
+
+if(recetaEncontrada == null){
+
+    javax.swing.JOptionPane.showMessageDialog(
+        null,
+        "Receta no encontrada"
+    );
+
+    return;
+}
+
+String faltantes = "";
+
+boolean medicamento1 = false;
+boolean medicamento2 = false;
+boolean medicamento3 = false;
+
+// matenmeeeee esto sirve para validar el inventario
+for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+    medicamento m = a.getMedicamentos().get(i);
+
+    if(m.getNombreMedicamento().equalsIgnoreCase(
+        recetaEncontrada.getMedicamento1())){
+
+        int stock =
+            Integer.parseInt(m.getCantMedicamento());
+
+        int necesaria =
+            recetaEncontrada.getCantMedicamento1();
+
+        if(stock >= necesaria){
+
+            medicamento1 = true;
+
+        }else{
+
+            int falta = necesaria - stock;
+
+            faltantes +=
+                recetaEncontrada.getMedicamento1()
+                + " faltan "
+                + falta
+                + "\n";
+        }
+    }
+
+    if(m.getNombreMedicamento().equalsIgnoreCase(
+        recetaEncontrada.getMedicamento2())){
+
+        int stock =
+            Integer.parseInt(m.getCantMedicamento());
+
+        int necesaria =
+            recetaEncontrada.getCantMedicamento2();
+
+        if(stock >= necesaria){
+
+            medicamento2 = true;
+
+        }else{
+
+            int falta = necesaria - stock;
+
+            faltantes +=
+                recetaEncontrada.getMedicamento2()
+                + " faltan "
+                + falta
+                + "\n";
+        }
+    }
+
+
+    if(m.getNombreMedicamento().equalsIgnoreCase(
+        recetaEncontrada.getMedicamento3())){
+
+        int stock =Integer.parseInt(m.getCantMedicamento());
+
+        int necesaria = recetaEncontrada.getCantMedicamento3();
+
+        if(stock >= necesaria){
+
+            medicamento3 = true;
+
+        }else{
+
+            int falta = necesaria - stock;
+
+            faltantes +=
+                recetaEncontrada.getMedicamento3()+ " faltan "+ falta+ "\n";
+        }
+    }
+}
+
+// matenmeeeeee esta monda sirve pa que si todo esta bien aga la resta del inventario
+if(medicamento1 && medicamento2 && medicamento3){
+
+    for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+        medicamento m = a.getMedicamentos().get(i);
+
+        if(m.getNombreMedicamento().equalsIgnoreCase(
+            recetaEncontrada.getMedicamento1())){
+
+            int total =
+                Integer.parseInt(m.getCantMedicamento())- recetaEncontrada.getCantMedicamento1();
+
+            m.setCantMedicamento(
+                String.valueOf(total)
+            );
+        }
+
+        if(m.getNombreMedicamento().equalsIgnoreCase(
+            recetaEncontrada.getMedicamento2())){
+
+            int total =Integer.parseInt(m.getCantMedicamento())- recetaEncontrada.getCantMedicamento2();
+
+            m.setCantMedicamento(
+                String.valueOf(total)
+            );
+        }
+
+        if(m.getNombreMedicamento().equalsIgnoreCase(
+            recetaEncontrada.getMedicamento3())){
+
+            int total =Integer.parseInt(m.getCantMedicamento())- recetaEncontrada.getCantMedicamento3();
+
+            m.setCantMedicamento(
+                String.valueOf(total)
+            );
+        }
+    }
+
+    javax.swing.JOptionPane.showMessageDialog(null,"Receta entregada correctamente");
+
+    }else{
+
+    javax.swing.JOptionPane.showMessageDialog(null,"No se puede entregar la receta\n\n"+ faltantes
+    );
+}             // TODO add your handling code here:
+    }//GEN-LAST:event_boton_entregaActionPerformed
+
+    private void panel_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_buscarMouseClicked
+ jTabbedPane2.setSelectedIndex(0);         // TODO add your handling code here:
+    }//GEN-LAST:event_panel_buscarMouseClicked
+
+    private void boton_agregar_medicinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregar_medicinaActionPerformed
+
+
+        String nombre = tx_nombre_medicamento.getText();
+        String cantidad = tx_cantidad_medicamento.getText();
+
+        
+        if(nombre.isEmpty() || cantidad.isEmpty()){
+
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Complete todos los campos"
+            );
+
+            return;
+        }
+
+        boolean existe = false;
+
+        for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+            medicamento m = a.getMedicamentos().get(i);
+
+            if(m.getNombreMedicamento().equalsIgnoreCase(nombre)){
+
+                int cantidadActual =
+                    Integer.parseInt(m.getCantMedicamento());
+
+                int nuevaCantidad =
+                    Integer.parseInt(cantidad);
+
+                int total =
+                    cantidadActual + nuevaCantidad;
+
+                m.setCantMedicamento(
+                    String.valueOf(total)
+                );
+
+                existe = true;
+            }
+        } if(existe == false){
+
+            medicamento nuevo =
+                new medicamento(nombre, cantidad);
+
+            a.registrarMedicamento(nuevo);
+        }
+
+      
+        modeloMedicamentos.clear();
+
+        for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+            medicamento m = a.getMedicamentos().get(i);
+
+            modeloMedicamentos.addElement(m.getNombreMedicamento()+ " Cantidad: "+ m.getCantMedicamento());
+        }
+
+      
+        tx_nombre_medicamento.setText("");
+        tx_cantidad_medicamento.setText("");
+
+        javax.swing.JOptionPane.showMessageDialog(null,"Medicamento agregado");
+    
+   
+    }//GEN-LAST:event_boton_agregar_medicinaActionPerformed
+
+    private void boton_receta_especificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_receta_especificaActionPerformed
+
+
+        String idReceta = tx_id_reseta.getText();
+
+        modeloRecetas.clear();
+
+        if(idReceta.isEmpty()){
+
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Ingrese el ID de la receta"
+            );
+
+            return;
+        }
+
+        boolean encontrada = false;
+
+       for(int i = 0; i < a.getRecetas().size(); i++){
+
+    Receta r = a.getRecetas().get(i);
+
+            if(r.getIdReceta().equals(idReceta)){
+
+                modeloRecetas.addElement("ID receta: " + r.getIdReceta());
+
+                modeloRecetas.addElement("Paciente: " + r.getCedulaPaciente()
+                );
+
+                modeloRecetas.addElement("Doctor: " + r.getNombreDoctor());
+
+                modeloRecetas.addElement(r.getMedicamento1()+ " Cantidad: "+ r.getCantMedicamento1());
+
+                modeloRecetas.addElement(r.getMedicamento2()+ " Cantidad: "+ r.getCantMedicamento2());
+
+                modeloRecetas.addElement(r.getMedicamento3()+ " Cantidad: "+ r.getCantMedicamento3());
+
+                encontrada = true;
+            }
+        }
+
+        if(encontrada == false){
+
+            modeloRecetas.addElement(
+                "Receta no encontrada"
+            );
+        }
+           // TODO add your handling code here:
+    }//GEN-LAST:event_boton_receta_especificaActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        new comienzo().setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,13 +691,15 @@ public class farmaceuta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton boton_agregar_medicina;
+    private javax.swing.JButton boton_buscar_reseta;
+    private javax.swing.JButton boton_entrega;
+    private javax.swing.JButton boton_receta_especifica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -309,7 +712,6 @@ public class farmaceuta extends javax.swing.JFrame {
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -319,11 +721,12 @@ public class farmaceuta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel p_entrega;
     private javax.swing.JPanel p_inventario_f;
+    private javax.swing.JPanel panel_buscar;
+    private javax.swing.JTextField tx_cantidad_medicamento;
+    private javax.swing.JTextField tx_id_reseta;
+    private javax.swing.JTextField tx_idpaciente;
+    private javax.swing.JTextField tx_nombre_medicamento;
     // End of variables declaration//GEN-END:variables
 }

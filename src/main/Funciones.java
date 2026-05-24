@@ -212,7 +212,7 @@ public class Funciones {
         for (String linea : lineas) {
             String[] partes = linea.split(";", -1);
             if(partes.length >= 6) {
-                consultas.add(new Consulta(partes[0], partes[1], partes[2], partes[3], partes[4], Boolean.parseBoolean(partes[5])));
+                consultas.add(new Consulta(partes[0], partes[1], partes[2], partes[3], partes[4],partes[5], Boolean.parseBoolean(partes[6])));
             }
         }
     }
@@ -224,6 +224,7 @@ public class Funciones {
                 if (obj instanceof Persona) pw.println(((Persona)obj).toLineaTexto());
                 else if (obj instanceof Receta) pw.println(((Receta)obj).toLineaTexto());
                 else if (obj instanceof Consulta) pw.println(((Consulta)obj).toLineaTexto());
+                else if (obj instanceof medicamento) pw.println(((medicamento)obj).getNombreMedicamento() + ";" + ((medicamento)obj).getCantMedicamento());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -262,7 +263,8 @@ public class Funciones {
     public ArrayList<Paciente> getPacientes() { return pacientes; }
     public ArrayList<Doctor> getDoctores() { return doctores; }
     public ArrayList<Farmaceuta> getFarmaceutas() { return farmaceutas; }
-
+    public ArrayList<Receta> getRecetas() {return recetas;}
+    public ArrayList<medicamento> getMedicamentos() {return medicamentos;}
 
 }
 

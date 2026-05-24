@@ -6,16 +6,20 @@ public class Consulta {
     private String nombrePaciente;
     private String cedulaDoctor;
     private String nombreDoctor;
+    private String motivo;
     private boolean completada;
 
-    public Consulta(String idConsulta, String cedulaPaciente, String nombrePaciente, String cedulaDoctor, String nombreDoctor, boolean completada) {
+    public Consulta(String idConsulta, String cedulaPaciente, String nombrePaciente, String cedulaDoctor, String nombreDoctor, String motivo, boolean completada) {
         this.idConsulta = idConsulta;
         this.cedulaPaciente = cedulaPaciente;
         this.nombrePaciente = nombrePaciente;
         this.cedulaDoctor = cedulaDoctor;
         this.nombreDoctor = nombreDoctor;
+        this.motivo = motivo;
         this.completada = completada;
     }
+
+    
 
     public String getIdConsulta() {
         return idConsulta;
@@ -65,7 +69,14 @@ public class Consulta {
         this.completada = completada;
     }
 
-    
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
     
     public String toLineaTexto() {
         return idConsulta + ";" + cedulaPaciente + ";" + nombrePaciente + ";" + cedulaDoctor + ";" + nombreDoctor + ";" + completada;

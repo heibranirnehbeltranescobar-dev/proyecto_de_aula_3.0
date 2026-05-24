@@ -141,7 +141,7 @@ public class Registro extends javax.swing.JFrame {
         int edad = Integer.parseInt(vedad);
 
         a.registrarPaciente(new Paciente(cedula, nombre, edad));
-
+        
         new comienzo().setVisible(true);
         this.setVisible(false);
     }
