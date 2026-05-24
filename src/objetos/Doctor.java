@@ -47,6 +47,6 @@ public class Doctor extends Persona {
     
     @Override
     public String toLineaTexto() {
-        return cedula + ";" + nombre + ";" + edad;
+       return tipo + ";" + cedula + ";" + nombre + ";" + edad;
     }
 }
