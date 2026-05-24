@@ -18,6 +18,15 @@ public class Funciones {
      
 
     private static final String DIR_DATOS = "datos_hospital/";
+    private static Funciones instanciaUnica;
+    
+    public static Funciones getInstancia() {
+        if (instanciaUnica == null) {
+            instanciaUnica = new Funciones();
+            instanciaUnica.SistemaHospital(); // Se inicializa y carga los archivos una sola vez
+        }
+        return instanciaUnica;
+    }
 
     public  void SistemaHospital() {
         
@@ -68,19 +77,15 @@ public class Funciones {
         guardarPacientes();
     }
     public Paciente buscarPaciente(String cedula) {
-        for (int i = 0; i < pacientes.size(); i++) {
-            Paciente p = null;
-            if (pacientes.get(i).getCedula().equals(cedula)) 
-                p=pacientes.get(i);
-            return p;
+       for (Paciente p : pacientes) {
+        if (p.getCedula().trim().equals(cedula.trim())) { 
+            return p; // Si lo encuentra, lo devuelve inmediatamente
         }
-        
-        for (Paciente p : pacientes) {
-            if (p.getCedula().equals(cedula)) return p;
-        }
-        return null;
     }
-    private void guardarPacientes() {
+    return null; // Si termina todo el bucle y no lo vio, devuelve null
+
+    }
+    public void guardarPacientes() {
         escribirArchivo(DIR_DATOS + "pacientes.txt", pacientes);
     }
     private void cargarPacientes() {
@@ -105,18 +110,30 @@ public class Funciones {
         }
         return null;
     }
+    
+    public Doctor buscarDoctorPorEspecialidad(String especialidad) {
+    for (Doctor d : doctores) {
+        // Usamos getTipo() que es el método real en tu clase Doctor
+        if (d.getTipo() != null && d.getTipo().toLowerCase().trim().equals(especialidad.toLowerCase().trim())) {
+            return d;
+        }
+      }
+    return null; 
+    }
     private void guardarDoctores() {
         escribirArchivo(DIR_DATOS + "doctores.txt", doctores);
     }
     private void cargarDoctores() {
         ArrayList<String> lineas = leerArchivo(DIR_DATOS + "doctores.txt");
-        doctores.clear();
-        for (String linea : lineas) {
-            String[] partes = linea.split(";");
-            if(partes.length >= 3) {
-                doctores.add(new Doctor(partes[0],partes[1], partes[2], Integer.parseInt(partes[3])));
-            }
+    doctores.clear();
+    for (String linea : lineas) {
+        String[] partes = linea.split(";");
+        
+        // REVISIÓN CRÍTICA: Debe ser >= 4 porque usas partes[0], partes[1], partes[2] y partes[3]
+        if (partes.length >= 4) { 
+            doctores.add(new Doctor(partes[0], partes[1], partes[2], Integer.parseInt(partes[3])));
         }
+      }
     }
 
     // --- FARMACEUTAS ---

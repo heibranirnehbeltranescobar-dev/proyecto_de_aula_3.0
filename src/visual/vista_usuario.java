@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visual;
-
+import main.*;
+import objetos.*;
 
 
 /**
@@ -12,12 +13,15 @@ package visual;
  */
 public class vista_usuario extends javax.swing.JFrame {
     
+    Funciones a = Funciones.getInstancia();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vista_usuario.class.getName());
 
+    private Paciente pacienteActual;
     /**
      * Creates new form vista_usuario
      */
-    public vista_usuario() {
+    public vista_usuario(Paciente paciente) {
+        this.pacienteActual = paciente;
         initComponents();
     }
 
@@ -45,43 +49,30 @@ public class vista_usuario extends javax.swing.JFrame {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        B_agendar_cardiologia = new javax.swing.JToggleButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        txt_area_cardiologia = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        B_agendar_dermatologia = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txt_area_dermatologia = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        B_agendar_pediatria = new javax.swing.JToggleButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txt_area_pediatria = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        B_agendar_citaGeneral = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_area_citaGeneral = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -199,46 +190,15 @@ public class vista_usuario extends javax.swing.JFrame {
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        B_agendar_cardiologia.setText("AGENDAR CITA");
+        B_agendar_cardiologia.addActionListener(this::B_agendar_cardiologiaActionPerformed);
+        jPanel8.add(B_agendar_cardiologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
-        jLabel21.setText("HORARIO DISPONIBLE");
+        txt_area_cardiologia.setColumns(20);
+        txt_area_cardiologia.setRows(5);
+        jScrollPane9.setViewportView(txt_area_cardiologia);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 150, 30));
-
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane10.setViewportView(jList5);
-
-        jPanel8.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 120, 260));
-
-        jToggleButton1.setText("AGENDAR CITA");
-        jPanel8.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
-
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane9.setViewportView(jTextArea5);
-
-        jPanel8.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 250, 100));
+        jPanel8.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 250, 100));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -270,42 +230,13 @@ public class vista_usuario extends javax.swing.JFrame {
 
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("HORARIO DISPONIBLE");
+        B_agendar_dermatologia.setText("AGENDAR CITA");
+        B_agendar_dermatologia.addActionListener(this::B_agendar_dermatologiaActionPerformed);
+        jPanel11.add(B_agendar_dermatologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap())
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 130, 30));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList1);
-
-        jPanel11.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 130, 270));
-
-        jButton1.setText("AGENDAR CITA");
-        jPanel11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txt_area_dermatologia.setColumns(20);
+        txt_area_dermatologia.setRows(5);
+        jScrollPane2.setViewportView(txt_area_dermatologia);
 
         jPanel11.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 250, 110));
 
@@ -337,45 +268,15 @@ public class vista_usuario extends javax.swing.JFrame {
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(jList3);
+        B_agendar_pediatria.setText("AGENDAR CITA");
+        B_agendar_pediatria.addActionListener(this::B_agendar_pediatriaActionPerformed);
+        jPanel13.add(B_agendar_pediatria, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
-        jPanel13.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 130, 260));
+        txt_area_pediatria.setColumns(20);
+        txt_area_pediatria.setRows(5);
+        jScrollPane5.setViewportView(txt_area_pediatria);
 
-        jLabel9.setText("HORARIO DISPONBLE");
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addContainerGap())
-        );
-
-        jPanel13.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 130, 30));
-
-        jToggleButton2.setText("AGENDAR CITA");
-        jToggleButton2.addActionListener(this::jToggleButton2ActionPerformed);
-        jPanel13.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane5.setViewportView(jTextArea3);
-
-        jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 260, 120));
+        jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 260, 120));
 
         jLabel8.setText("MOTIVO DE LA CITA");
 
@@ -404,14 +305,14 @@ public class vista_usuario extends javax.swing.JFrame {
         jTabbedPane4.addTab("PEDIATRIA", jPanel13);
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 110, 270));
 
-        jToggleButton3.setText("AGENDAR CITA");
-        jPanel7.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        B_agendar_citaGeneral.setText("AGENDAR CITA");
+        B_agendar_citaGeneral.addActionListener(this::B_agendar_citaGeneralActionPerformed);
+        jPanel7.add(B_agendar_citaGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_area_citaGeneral.setColumns(20);
+        txt_area_citaGeneral.setRows(5);
+        jScrollPane1.setViewportView(txt_area_citaGeneral);
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 290, 150));
 
@@ -459,14 +360,106 @@ public class vista_usuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void B_agendar_pediatriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_pediatriaActionPerformed
+                                                 
+    String motivo = txt_area_pediatria.getText().trim();
+    
+    // 1. Validar que el usuario haya escrito el motivo
+    if (motivo.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite el motivo de la cita para Pediatría.");
+        return;
+    }
+
+    // 2. Buscar un doctor cuya especialidad (tipo) sea "pediatra"
+    Doctor doc = a.buscarDoctorPorEspecialidad("pediatra");
+    
+    // Si no encuentra ningún pediatra asignado, le pone una cédula genérica de respaldo
+    String cedulaDoc = (doc != null) ? doc.getCedula() : "40405050"; 
+
+    // 3. Generar un ID único para la consulta
+    String idConsulta = "C" + (a.getPacientes().size() + System.currentTimeMillis() % 1000); 
+
+    // 4. Crear el objeto Consulta
+    Consulta nuevaConsulta = new Consulta(idConsulta, "27/05/2026", "02:00 PM", pacienteActual.getCedula(), cedulaDoc, motivo, false);
+
+    // 5. Guardar los datos en el sistema
+    a.registrarConsulta(nuevaConsulta);
+    
+    // 6. Mensaje de éxito y limpiar el componente
+    javax.swing.JOptionPane.showMessageDialog(this, "¡Cita de Pediatría agendada con éxito!");
+    txt_area_pediatria.setText("");
+    }//GEN-LAST:event_B_agendar_pediatriaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        new usuario().setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void B_agendar_dermatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_dermatologiaActionPerformed
+    String motivo = txt_area_dermatologia.getText().trim();
+    if (motivo.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite el motivo de la cita.");
+        return;
+    }
+
+    Doctor doc = a.buscarDoctorPorEspecialidad("dermatologo");
+    String cedulaDoc = (doc != null) ? doc.getCedula() : "20212343";
+
+    String idConsulta = "C" + (a.getPacientes().size() + System.currentTimeMillis() % 1000);
+    Consulta nuevaConsulta = new Consulta(idConsulta, "25/05/2026", "10:00 AM", pacienteActual.getCedula(), cedulaDoc, motivo, false);
+
+    a.registrarConsulta(nuevaConsulta);
+    javax.swing.JOptionPane.showMessageDialog(this, "¡Cita de Dermatología agendada con éxito!");
+    txt_area_dermatologia.setText("");
+    }//GEN-LAST:event_B_agendar_dermatologiaActionPerformed
+
+    private void B_agendar_citaGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_citaGeneralActionPerformed
+     String motivo = txt_area_citaGeneral.getText().trim();
+    if (motivo.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite el motivo de la cita.");
+        return;
+    }
+
+    
+    Doctor doc = a.buscarDoctorPorEspecialidad("general");
+    String cedulaDoc = (doc != null) ? doc.getCedula() : "2014223"; // ID por defecto por si acaso
+
+ 
+    String idConsulta = "C" + (a.getPacientes().size() + System.currentTimeMillis() % 1000); 
+    Consulta nuevaConsulta = new Consulta(idConsulta, "24/05/2026", "08:00 AM", pacienteActual.getCedula(), cedulaDoc, motivo, false);
+
+    a.registrarConsulta(nuevaConsulta);
+    javax.swing.JOptionPane.showMessageDialog(this, "¡Cita de Medicina General agendada con éxito!");
+    txt_area_citaGeneral.setText(""); 
+    }//GEN-LAST:event_B_agendar_citaGeneralActionPerformed
+
+    private void B_agendar_cardiologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agendar_cardiologiaActionPerformed
+      String motivo = txt_area_cardiologia.getText().trim();
+    
+    
+    if (motivo.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite el motivo de la cita para Cardiología.");
+        return;
+    }
+
+  
+    Doctor doc = a.buscarDoctorPorEspecialidad("cardiologo");
+    
+    
+    String cedulaDoc = (doc != null) ? doc.getCedula() : "30304040"; 
+
+   
+    String idConsulta = "C" + (a.getPacientes().size() + System.currentTimeMillis() % 1000); 
+
+    
+    Consulta nuevaConsulta = new Consulta(idConsulta, "26/05/2026", "09:30 AM", pacienteActual.getCedula(), cedulaDoc, motivo, false);
+
+ 
+    a.registrarConsulta(nuevaConsulta);
+    
+    javax.swing.JOptionPane.showMessageDialog(this, "¡Cita de Cardiología agendada con éxito!");
+    txt_area_cardiologia.setText("");
+    }//GEN-LAST:event_B_agendar_cardiologiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,11 +483,14 @@ public class vista_usuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new vista_usuario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new vista_usuario(null).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JToggleButton B_agendar_cardiologia;
+    private javax.swing.JToggleButton B_agendar_citaGeneral;
+    private javax.swing.JButton B_agendar_dermatologia;
+    private javax.swing.JToggleButton B_agendar_pediatria;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -502,24 +498,16 @@ public class vista_usuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList3;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
@@ -529,25 +517,17 @@ public class vista_usuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JTextArea txt_area_cardiologia;
+    private javax.swing.JTextArea txt_area_citaGeneral;
+    private javax.swing.JTextArea txt_area_dermatologia;
+    private javax.swing.JTextArea txt_area_pediatria;
     // End of variables declaration//GEN-END:variables
 }

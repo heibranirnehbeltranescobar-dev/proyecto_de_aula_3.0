@@ -1,22 +1,58 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visual;
+import main.*;
+import objetos.*;
 
 /**
  *
  * @author ACER
  */
 public class visual_Admin extends javax.swing.JFrame {
-    
+    Funciones a = Funciones.getInstancia();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(visual_Admin.class.getName());
 
+    private javax.swing.DefaultListModel<String> modeloListaUsuarios = new javax.swing.DefaultListModel<>();
     /**
      * Creates new form visual_Admin
      */
     public visual_Admin() {
         initComponents();
+        
+        jList1_usuario.setModel(modeloListaUsuarios);
+        actualizarListaUsuarios();
+        
+        // ENLAZAR ESCUCHADORES DE EVENTOS A LOS BOTONES
+        for (java.awt.event.ActionListener al : B_registrar_usuario.getActionListeners()) {
+        B_registrar_usuario.removeActionListener(al);
+        }
+        B_registrar_usuario.addActionListener(this::B_registrar_usuarioActionPerformed);
+        
+        for (java.awt.event.ActionListener al : B_modificar_usuario.getActionListeners()) {
+            B_modificar_usuario.removeActionListener(al);
+        }
+        B_modificar_usuario.addActionListener(this::B_modificar_usuarioActionPerformed);
+
+       
+        for (java.awt.event.ActionListener al : B_visualizar_usuario.getActionListeners()) {
+            B_visualizar_usuario.removeActionListener(al);
+        }
+        B_visualizar_usuario.addActionListener(this::B_visualizar_usuarioActionPerformed);
+
+        
+        for (java.awt.event.ActionListener al : B_eliminar_usuario.getActionListeners()) {
+            B_eliminar_usuario.removeActionListener(al);
+        }
+        B_eliminar_usuario.addActionListener(this::B_eliminar_usuarioActionPerformed);
+        
+        
+        jList1_usuario.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && jList1_usuario.getSelectedValue() != null) {
+                cargarCamposDesdeLista();
+            }
+        });
     }
 
     /**
@@ -28,22 +64,354 @@ public class visual_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        B_registrar_usuario = new javax.swing.JButton();
+        B_modificar_usuario = new javax.swing.JButton();
+        B_visualizar_usuario = new javax.swing.JButton();
+        B_eliminar_usuario = new javax.swing.JButton();
+        jScrollPane_usuario = new javax.swing.JScrollPane();
+        jList1_usuario = new javax.swing.JList<>();
+        txr_cedula_usuario = new javax.swing.JTextField();
+        txt_nombre_usuario = new javax.swing.JTextField();
+        txt_edad_usuario = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4)
+                .addContainerGap(508, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
+
+        jPanel2.setBackground(new java.awt.Color(51, 102, 255));
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel2.setText("ADMINISTRACION");
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 14, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(209, 209, 209)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 680, -1));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setText("CEDULA:");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel8)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
+        );
+
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, 30));
+
+        jLabel7.setText("NOMBRE");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addContainerGap())
+        );
+
+        jPanel4.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 80, 30));
+
+        jLabel9.setText("EDAD");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addContainerGap())
+        );
+
+        jPanel4.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 70, 30));
+
+        B_registrar_usuario.setBackground(new java.awt.Color(0, 255, 0));
+        B_registrar_usuario.setText("REGISTRAR");
+        B_registrar_usuario.addActionListener(this::B_registrar_usuarioActionPerformed);
+        jPanel4.add(B_registrar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        B_modificar_usuario.setBackground(new java.awt.Color(255, 255, 51));
+        B_modificar_usuario.setText("MODIFICAR");
+        B_modificar_usuario.addActionListener(this::B_modificar_usuarioActionPerformed);
+        jPanel4.add(B_modificar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+
+        B_visualizar_usuario.setBackground(new java.awt.Color(51, 204, 255));
+        B_visualizar_usuario.setText("VISUALIZAR");
+        B_visualizar_usuario.addActionListener(this::B_visualizar_usuarioActionPerformed);
+        jPanel4.add(B_visualizar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        B_eliminar_usuario.setBackground(new java.awt.Color(255, 51, 51));
+        B_eliminar_usuario.setText("ELIMINAR");
+        B_eliminar_usuario.addActionListener(this::B_eliminar_usuarioActionPerformed);
+        jPanel4.add(B_eliminar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 90, -1));
+
+        jList1_usuario.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane_usuario.setViewportView(jList1_usuario);
+
+        jPanel4.add(jScrollPane_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 320, 380));
+        jPanel4.add(txr_cedula_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 42, 150, 30));
+        jPanel4.add(txt_nombre_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 112, 150, 30));
+        jPanel4.add(txt_edad_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 182, 140, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_admin.jpg"))); // NOI18N
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 410));
+
+        jTabbedPane1.addTab("USUARIO", jPanel4);
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_admin.jpg"))); // NOI18N
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 410));
+
+        jTabbedPane1.addTab("FARMACEUTA", jPanel5);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_admin.jpg"))); // NOI18N
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 410));
+
+        jTabbedPane1.addTab("DOCTOR", jPanel6);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 630, 440));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_visual_adminjpg.jpg"))); // NOI18N
+        jLabel1.setText("\n");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 680, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void B_registrar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_registrar_usuarioActionPerformed
+    String cedula = txr_cedula_usuario.getText().trim();
+        String nombre = txt_nombre_usuario.getText().trim();
+        String edadStr = txt_edad_usuario.getText().trim();
+
+        if (cedula.isEmpty() || nombre.isEmpty() || edadStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
+            return;
+        }
+
+        // Validar si el paciente ya existe por cédula
+        if (a.buscarPaciente(cedula) != null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Esta cédula ya se encuentra registrada.");
+            return;
+        }
+
+        try {
+            int edad = Integer.parseInt(edadStr);
+            // Creamos el nuevo objeto Paciente y lo mandamos al ArrayList/Archivo por medio de Funciones
+            Paciente nuevoPaciente = new Paciente(cedula, nombre, edad);
+            a.registrarPaciente(nuevoPaciente);
+            
+            actualizarListaUsuarios();
+            limpiarCampos();
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario registrado con éxito.");
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "La edad debe ser un número válido.");
+        }
+    }//GEN-LAST:event_B_registrar_usuarioActionPerformed
+
+    private void B_visualizar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_visualizar_usuarioActionPerformed
+        actualizarListaUsuarios();
+        javax.swing.JOptionPane.showMessageDialog(this, "Lista de usuarios sincronizada.");
+    }//GEN-LAST:event_B_visualizar_usuarioActionPerformed
+
+    private void B_modificar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_modificar_usuarioActionPerformed
+       String cedula = txr_cedula_usuario.getText().trim();
+        String nuevoNombre = txt_nombre_usuario.getText().trim();
+        String nuevaEdadStr = txt_edad_usuario.getText().trim();
+
+        if (cedula.isEmpty() || nuevoNombre.isEmpty() || nuevaEdadStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un usuario o digite la cédula correspondiente.");
+            return;
+        }
+
+        Paciente paciente = a.buscarPaciente(cedula);
+        if (paciente == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No existe un usuario registrado con esa cédula.");
+            return;
+        }
+
+        try {
+            int nuevaEdad = Integer.parseInt(nuevaEdadStr);
+            // Actualizamos los atributos del objeto encontrado
+            paciente.setNombre(nuevoNombre);
+            paciente.setEdad(nuevaEdad);
+            
+            // Guardamos los cambios permanentemente en el archivo de texto externo
+            a.guardarPacientes(); 
+            
+            actualizarListaUsuarios();
+            limpiarCampos();
+            javax.swing.JOptionPane.showMessageDialog(this, "Datos del usuario modificados con éxito.");
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "La edad debe ser un número válido.");
+        }
+    }//GEN-LAST:event_B_modificar_usuarioActionPerformed
+
+    private void B_eliminar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_eliminar_usuarioActionPerformed
+       String cedula = txr_cedula_usuario.getText().trim();
+
+        if (cedula.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un usuario o digite su cédula para eliminarlo.");
+            return;
+        }
+
+        Paciente paciente = a.buscarPaciente(cedula);
+        if (paciente == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se encontró ningún usuario con esa cédula.");
+            return;
+        }
+
+        int confirmar = javax.swing.JOptionPane.showConfirmDialog(this, 
+                "¿Está seguro de que desea eliminar a " + paciente.getNombre() + "?", 
+                "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == javax.swing.JOptionPane.YES_OPTION) {
+            // Removemos de las colecciones de Funciones y guardamos el estado del archivo limpio
+            a.getPacientes().remove(paciente);
+            a.guardarPacientes();
+            
+            actualizarListaUsuarios();
+            limpiarCampos();
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario eliminado del sistema.");
+        }
+    }//GEN-LAST:event_B_eliminar_usuarioActionPerformed
+
+    // 1. Método que actualiza dinámicamente el JList con los pacientes reales
+    private void actualizarListaUsuarios() {
+        modeloListaUsuarios.clear();
+        for (Paciente p : a.getPacientes()) {
+            modeloListaUsuarios.addElement(p.getCedula() + " - " + p.getNombre() + " (" + p.getEdad() + " años)");
+        }
+    }
+
+    // 2. Método que limpia todas las cajas de texto automáticamente
+    private void limpiarCampos() {
+        txr_cedula_usuario.setText("");
+        txt_nombre_usuario.setText("");
+        txt_edad_usuario.setText("");
+        jList1_usuario.clearSelection();
+    }
+
+    // 3. Método que toma los datos seleccionados del JList y los carga en los JTextFields
+    private void cargarCamposDesdeLista() {
+        String seleccion = jList1_usuario.getSelectedValue();
+        if (seleccion != null) {
+            String[] partes = seleccion.split(" - ");
+            txr_cedula_usuario.setText(partes[0].trim());
+            
+            String[] subPartes = partes[1].split(" \\(");
+            txt_nombre_usuario.setText(subPartes[0].trim());
+            
+            String edad = subPartes[1].replace(" años)", "").trim();
+            txt_edad_usuario.setText(edad);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -70,5 +438,33 @@ public class visual_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_eliminar_usuario;
+    private javax.swing.JButton B_modificar_usuario;
+    private javax.swing.JButton B_registrar_usuario;
+    private javax.swing.JButton B_visualizar_usuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1_usuario;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane_usuario;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txr_cedula_usuario;
+    private javax.swing.JTextField txt_edad_usuario;
+    private javax.swing.JTextField txt_nombre_usuario;
     // End of variables declaration//GEN-END:variables
 }

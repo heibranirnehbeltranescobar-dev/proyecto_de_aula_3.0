@@ -11,8 +11,9 @@ import objetos.*;
  */
 public class Registro extends javax.swing.JFrame {
     
+    Funciones a = Funciones.getInstancia();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Registro.class.getName());
-      private Funciones a;
+    
     /**
      * Creates new form Registro
      */
@@ -123,35 +124,33 @@ public class Registro extends javax.swing.JFrame {
 
     private void B_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_registroActionPerformed
 
+      // CORRECCIÓN: Usamos .trim() para limpiar espacios vacíos accidentales
+        String nombre = tx_nombre.getText().trim();
+        String vedad = tx_edad.getText().trim();
+        String cedula = tx_cedula.getText().trim();
         
-        String nombre = tx_nombre.getText();
-        String vedad = tx_edad.getText();
-        String cedula = tx_cedula.getText();
-        error_registro.setText("  ");
-    if (nombre.isEmpty() || vedad.isEmpty() || cedula.isEmpty()) {
-
-        error_registro.setText("Algun espacio esta en blanco");
-
-    } else if (cedula.length() < 8 || cedula.length() > 10) {
-
-        error_registro.setText("La cedula debe tener de 8 a 10 digitos");
-
-    } else {
-
-        int edad = Integer.parseInt(vedad);
-
-        a.registrarPaciente(new Paciente(cedula, nombre, edad));
+        error_registro.setText("");
         
-        new comienzo().setVisible(true);
-        this.setVisible(false);
-    }
-      
+        if (nombre.isEmpty() || vedad.isEmpty() || cedula.isEmpty()) {
+            error_registro.setText("Algun espacio esta en blanco");
+        } else if (cedula.length() < 8 || cedula.length() > 10) {
+            error_registro.setText("La cedula debe tener de 8 a 10 digitos");
+        } else {
+            try {
+                int edad = Integer.parseInt(vedad);
+                
+                // Registra en la instancia única del Singleton
+                a.registrarPaciente(new Paciente(cedula, nombre, edad));
+                
+                // Redirección limpia
+                new usuario().setVisible(true);
+                this.setVisible(false);
+            } catch (NumberFormatException e) {
+                error_registro.setText("La edad debe ser un número válido.");
+            }
+        }  
+ 
 
-    
-
-      
-      
-   
     
 
     }//GEN-LAST:event_B_registroActionPerformed
@@ -199,7 +198,6 @@ public class Registro extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-         Funciones f = new Funciones();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Registro().setVisible(true));
     }

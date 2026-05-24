@@ -17,6 +17,7 @@ public class Ingreso_Admin extends javax.swing.JFrame {
      */
     public Ingreso_Admin() {
         initComponents();
+        B_entrar_admin.addActionListener(this::B_entrar_adminActionPerformed);
     }
 
     /**
@@ -29,10 +30,12 @@ public class Ingreso_Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        l_error_admin = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        B_entrar_admin = new javax.swing.JButton();
+        txt_cedula_admin = new javax.swing.JTextField();
+        txt_codigo_admin = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,14 +48,34 @@ public class Ingreso_Admin extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(l_error_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(l_error_admin, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 280, 30));
+
         jButton2.setText("X");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
 
-        jButton1.setText("INGRESAR AL SISTEMA");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 150, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 150, 30));
+        B_entrar_admin.setText("INGRESAR AL SISTEMA");
+        B_entrar_admin.addActionListener(this::B_entrar_adminActionPerformed);
+        jPanel1.add(B_entrar_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
+        jPanel1.add(txt_cedula_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 150, 30));
+        jPanel1.add(txt_codigo_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 150, 30));
 
         jLabel2.setText("CEDULA:");
 
@@ -120,9 +143,37 @@ public class Ingreso_Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      new comienzo().setVisible(true);
-      this.setVisible(false);
+    new comienzo().setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void B_entrar_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_entrar_adminActionPerformed
+     String cedula = txt_cedula_admin.getText().trim();
+    String codigo = txt_codigo_admin.getText().trim();
+
+    // 1. Validar campos vacíos o con espacios en blanco
+    if (cedula.isEmpty() || codigo.isEmpty()) {
+        l_error_admin.setText("Hay espacios en blanco.");
+        return;
+    }
+
+    // 2. Validar las credenciales fijas solicitadas
+    if (!cedula.equals("1042607596")) {
+        l_error_admin.setText("Cédula incorrecta.");
+        return;
+    }
+
+    if (!codigo.equals("123456789")) {
+        l_error_admin.setText("Código incorrecto.");
+        return;
+    }
+
+    // 3. Si todo es correcto, limpiar error y pasar a la vista de administración
+    l_error_admin.setText("");
+    
+    new visual_Admin().setVisible(true); 
+    this.setVisible(false);
+    }//GEN-LAST:event_B_entrar_adminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,7 +201,7 @@ public class Ingreso_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton B_entrar_admin;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -160,7 +211,9 @@ public class Ingreso_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel l_error_admin;
+    private javax.swing.JTextField txt_cedula_admin;
+    private javax.swing.JTextField txt_codigo_admin;
     // End of variables declaration//GEN-END:variables
 }
