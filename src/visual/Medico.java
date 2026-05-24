@@ -43,6 +43,28 @@ public class Medico extends javax.swing.JFrame {
         boton_ver_citas = new javax.swing.JButton();
         boton_elegir_receta = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        boton_si_receta = new javax.swing.JButton();
+        boton_no_receta = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        tx_m3 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        tx_cant_m3 = new javax.swing.JTextField();
+        tx_m1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        tx_cant_m1 = new javax.swing.JTextField();
+        tx_m2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        tx_cant_m2 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        boton_dar_receta = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +97,7 @@ public class Medico extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 90, 300));
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel5.add(tx_id_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 210, -1));
+        jPanel5.add(tx_id_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, -1));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -87,16 +109,98 @@ public class Medico extends javax.swing.JFrame {
         jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 130, 280));
 
         jLabel3.setText("ID consulta");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 30));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 100, 30));
 
         boton_ver_citas.setText("Citas pendientes");
         jPanel5.add(boton_ver_citas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         boton_elegir_receta.setText("Consulta a iniciar");
         jPanel5.add(boton_elegir_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_consulta.png"))); // NOI18N
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
 
         jTabbedPane1.addTab("tab1", jPanel5);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setText("Esnecesaria una receta?");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 130, 40));
+
+        boton_si_receta.setText("Si");
+        jPanel6.add(boton_si_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+
+        boton_no_receta.setText("no");
+        boton_no_receta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_no_recetaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(boton_no_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_consulta.png"))); // NOI18N
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
+
+        jTabbedPane1.addTab("tab2", jPanel6);
+
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("medicamento 3");
+        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel7.add(tx_m3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 140, 20));
+
+        jLabel8.setText("Cantidad");
+        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 60, -1));
+
+        tx_cant_m3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m3ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 90, -1));
+        jPanel7.add(tx_m1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 140, 20));
+
+        jLabel9.setText("medicamento 1");
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jLabel10.setText("Cantidad");
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 60, -1));
+
+        tx_cant_m1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 90, -1));
+        jPanel7.add(tx_m2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 20));
+
+        jLabel11.setText("medicamento 2");
+        jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel12.setText("Cantidad");
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, -1));
+
+        tx_cant_m2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m2ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 90, -1));
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 270));
+
+        boton_dar_receta.setText("dar receta");
+        jPanel7.add(boton_dar_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
+
+        jTabbedPane1.addTab("tab3", jPanel7);
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 490, 340));
 
@@ -113,6 +217,22 @@ public class Medico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_no_recetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_no_recetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_no_recetaActionPerformed
+
+    private void tx_cant_m3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m3ActionPerformed
+
+    private void tx_cant_m1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m1ActionPerformed
+
+    private void tx_cant_m2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,20 +260,42 @@ public class Medico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_dar_receta;
     private javax.swing.JButton boton_elegir_receta;
+    private javax.swing.JButton boton_no_receta;
+    private javax.swing.JButton boton_si_receta;
     private javax.swing.JButton boton_ver_citas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField tx_cant_m1;
+    private javax.swing.JTextField tx_cant_m2;
+    private javax.swing.JTextField tx_cant_m3;
     private javax.swing.JTextField tx_id_receta;
+    private javax.swing.JTextField tx_m1;
+    private javax.swing.JTextField tx_m2;
+    private javax.swing.JTextField tx_m3;
     // End of variables declaration//GEN-END:variables
 }
