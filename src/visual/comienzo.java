@@ -306,7 +306,7 @@ public class comienzo extends javax.swing.JFrame {
 
     private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
         jPanel7.setBackground(new Color(51,102,255));
-        new farmaceuta().setVisible(true); 
+        new Inicio_farmaceuta().setVisible(true); 
         this.setVisible(false);
     }//GEN-LAST:event_jPanel7MouseClicked
 
@@ -320,7 +320,7 @@ public class comienzo extends javax.swing.JFrame {
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
         jPanel6.setBackground(new Color(51,102,255));
-        new Medico().setVisible(true);
+        new Inicio_medico().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jPanel6MouseClicked
 
