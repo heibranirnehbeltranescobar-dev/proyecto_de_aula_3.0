@@ -120,7 +120,7 @@ public class Funciones {
       }
     return null; 
     }
-    private void guardarDoctores() {
+    public void guardarDoctores() {
         escribirArchivo(DIR_DATOS + "doctores.txt", doctores);
     }
     private void cargarDoctores() {
@@ -147,7 +147,7 @@ public class Funciones {
         }
         return null;
     }
-    private void guardarFarmaceutas() {
+    public void guardarFarmaceutas() {
         escribirArchivo(DIR_DATOS + "farmaceutas.txt", farmaceutas);
     }
     private void cargarFarmaceutas() {
