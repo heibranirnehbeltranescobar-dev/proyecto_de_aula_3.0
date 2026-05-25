@@ -46,10 +46,10 @@ public class Inicio_farmaceuta extends javax.swing.JFrame {
                 boton_inicio_farmaceutaActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_inicio_farmaceuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
+        jPanel1.add(boton_inicio_farmaceuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         jLabel1.setText("ingrese cedula");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 90, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, -1));
 
         tx_inicio_cedula_farmaceuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,13 +61,13 @@ public class Inicio_farmaceuta extends javax.swing.JFrame {
                 tx_inicio_cedula_farmaceutaKeyTyped(evt);
             }
         });
-        jPanel1.add(tx_inicio_cedula_farmaceuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 260, 40));
+        jPanel1.add(tx_inicio_cedula_farmaceuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 260, 40));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel3.setText("farmaceuta");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 110, 40));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cruz.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/WhatsApp Image 2026-05-24 at 8.44.17 PM.jpeg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
