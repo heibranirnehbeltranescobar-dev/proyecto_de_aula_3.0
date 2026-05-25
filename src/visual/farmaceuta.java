@@ -14,7 +14,7 @@ public class farmaceuta extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(farmaceuta.class.getName());
     private javax.swing.DefaultListModel modeloMedicamentos;
-    private Funciones a = new Funciones();
+    Funciones a = Funciones.getInstancia();
     private javax.swing.DefaultListModel modeloRecetas;
     /**
      * Creates new form farmaceuta
@@ -130,11 +130,12 @@ public class farmaceuta extends javax.swing.JFrame {
         jPanel4.add(boton_buscar_reseta, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 367, -1, -1));
         jPanel4.add(tx_idpaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 235, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Ingrese la cedula del paciente");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 171, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pastillas.png"))); // NOI18N
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 310, 350));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo inicio farmacea.png"))); // NOI18N
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 580, 410));
 
         jLabel7.setText("Receta del paciente");
         jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
@@ -153,6 +154,7 @@ public class farmaceuta extends javax.swing.JFrame {
 
         jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 294, 320));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre del medicamento");
         jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 180, -1));
 
@@ -170,6 +172,7 @@ public class farmaceuta extends javax.swing.JFrame {
         });
         jPanel7.add(tx_cantidad_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, 30));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Cantidad a agregar");
         jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 180, -1));
 
