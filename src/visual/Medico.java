@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visual;
-
+import main.*;
+import objetos.*;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 /**
  *
  * @author YARITZA
@@ -11,12 +14,21 @@ package visual;
 public class Medico extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Medico.class.getName());
+        Funciones a = Funciones.getInstancia();
 
+     private DefaultListModel modeloConsultas;
+     
+     private DefaultListModel modeloRecetas;
     /**
      * Creates new form Medico
      */
     public Medico() {
         initComponents();
+        modeloConsultas = new DefaultListModel();
+        modeloRecetas = new DefaultListModel();
+
+        jList1.setModel(modeloConsultas);
+        jList2.setModel(modeloRecetas);
     }
 
     /**
@@ -31,9 +43,8 @@ public class Medico extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         tx_id_receta = new javax.swing.JTextField();
@@ -41,8 +52,30 @@ public class Medico extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         boton_ver_citas = new javax.swing.JButton();
-        boton_elegir_receta = new javax.swing.JButton();
+        boton_elegir_cita = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        boton_si_receta = new javax.swing.JButton();
+        boton_no_receta = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        tx_m3 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        tx_cant_m3 = new javax.swing.JTextField();
+        tx_m1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        tx_cant_m1 = new javax.swing.JTextField();
+        tx_m2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        tx_cant_m2 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        boton_dar_receta = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,24 +91,23 @@ public class Medico extends javax.swing.JFrame {
         jLabel1.setText("Medico");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 111, 33));
 
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 70));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 80));
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setText("Citas");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 6, 34, 31));
-
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 90, -1));
-
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 90, 300));
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel5.add(tx_id_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 210, -1));
+        jPanel5.add(tx_id_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 210, -1));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -87,16 +119,135 @@ public class Medico extends javax.swing.JFrame {
         jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 130, 280));
 
         jLabel3.setText("ID consulta");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 30));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 100, 30));
 
         boton_ver_citas.setText("Citas pendientes");
+        boton_ver_citas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_ver_citasActionPerformed(evt);
+            }
+        });
         jPanel5.add(boton_ver_citas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        boton_elegir_receta.setText("Consulta a iniciar");
-        jPanel5.add(boton_elegir_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        boton_elegir_cita.setText("Consulta a iniciar");
+        boton_elegir_cita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_elegir_citaActionPerformed(evt);
+            }
+        });
+        jPanel5.add(boton_elegir_cita, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_consulta.png"))); // NOI18N
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
 
         jTabbedPane1.addTab("tab1", jPanel5);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setText("Esnecesaria una receta?");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 130, 40));
+
+        boton_si_receta.setText("Si");
+        boton_si_receta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_si_recetaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(boton_si_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+
+        boton_no_receta.setText("no");
+        boton_no_receta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_no_recetaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(boton_no_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_consulta.png"))); // NOI18N
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
+
+        jTabbedPane1.addTab("tab2", jPanel6);
+
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("medicamento 3");
+        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel7.add(tx_m3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 140, 20));
+
+        jLabel8.setText("Cantidad");
+        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 60, -1));
+
+        tx_cant_m3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m3ActionPerformed(evt);
+            }
+        });
+        tx_cant_m3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tx_cant_m3KeyTyped(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 90, -1));
+        jPanel7.add(tx_m1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 140, 20));
+
+        jLabel9.setText("medicamento 1");
+        jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        jLabel10.setText("Cantidad");
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 60, -1));
+
+        tx_cant_m1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m1ActionPerformed(evt);
+            }
+        });
+        tx_cant_m1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tx_cant_m1KeyTyped(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 90, -1));
+        jPanel7.add(tx_m2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 20));
+
+        jLabel11.setText("medicamento 2");
+        jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel12.setText("Cantidad");
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, -1));
+
+        tx_cant_m2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tx_cant_m2ActionPerformed(evt);
+            }
+        });
+        tx_cant_m2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tx_cant_m2KeyTyped(evt);
+            }
+        });
+        jPanel7.add(tx_cant_m2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 90, -1));
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 270));
+
+        boton_dar_receta.setText("dar receta");
+        boton_dar_receta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_dar_recetaActionPerformed(evt);
+            }
+        });
+        jPanel7.add(boton_dar_receta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_Medico_entrgar_receta.png"))); // NOI18N
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 310));
+
+        jTabbedPane1.addTab("tab3", jPanel7);
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 490, 340));
 
@@ -113,6 +264,263 @@ public class Medico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_no_recetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_no_recetaActionPerformed
+
+
+        String id = tx_id_receta.getText();
+
+        for(int i = 0; i < a.getConsultas().size(); i++){
+
+            Consulta c = a.getConsultas().get(i);
+
+            if(c.getIdConsulta().equals(id)){
+
+                c.setCompletada(true);
+
+                break;
+            }
+        }
+
+        a.actualizarConsulta();
+
+        javax.swing.JOptionPane.showMessageDialog(null,"Consulta finalizada");
+
+        jTabbedPane1.setSelectedIndex(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_no_recetaActionPerformed
+
+    private void tx_cant_m3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m3ActionPerformed
+
+    private void tx_cant_m1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m1ActionPerformed
+
+    private void tx_cant_m2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_cant_m2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m2ActionPerformed
+
+    private void boton_ver_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ver_citasActionPerformed
+boton_ver_citas.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+        modeloConsultas.clear();
+
+        ArrayList<Consulta> pendientes = a.obtenerConsultasPendientes();
+
+        for(int i = 0; i < pendientes.size(); i++){
+
+            Consulta c = pendientes.get(i);
+
+            modeloConsultas.addElement(
+                "ID: " + c.getIdConsulta() +
+                " Paciente: " + c.getCedulaPaciente()
+            );
+        }
+    }
+});        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_ver_citasActionPerformed
+
+    private void boton_elegir_citaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_elegir_citaActionPerformed
+
+        String id = tx_id_receta.getText();
+
+        boolean encontrada = false;
+
+           for(int i = 0; i < a.getConsultas().size(); i++){
+
+            Consulta c = a.getConsultas().get(i);
+
+            if(c.getIdConsulta().equals(id)){
+
+                encontrada = true;
+
+                jTabbedPane1.setSelectedIndex(1);
+
+                break;
+            }
+        }
+
+        if(encontrada == false){
+
+            javax.swing.JOptionPane.showMessageDialog(null,"Consulta no encontrada");
+        }
+            // TODO add your handling code here:
+    }//GEN-LAST:event_boton_elegir_citaActionPerformed
+
+    private void boton_si_recetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_si_recetaActionPerformed
+
+        jTabbedPane1.setSelectedIndex(2);      // TODO add your handling code here:
+    }//GEN-LAST:event_boton_si_recetaActionPerformed
+
+    private void boton_dar_recetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_dar_recetaActionPerformed
+
+
+        if(tx_m1.getText().isEmpty() || tx_cant_m1.getText().isEmpty()){
+
+            javax.swing.JOptionPane.showMessageDialog(null,"Complete minimo medicamento 1");
+
+        }else{
+
+            int cant1 = Integer.parseInt(tx_cant_m1.getText());
+            int cant2 = tx_cant_m2.getText().isEmpty() ? 0 : Integer.parseInt(tx_cant_m2.getText());
+            int cant3 = tx_cant_m3.getText().isEmpty() ? 0 : Integer.parseInt(tx_cant_m3.getText());
+
+            if(cant1 > 10 || cant2 > 10 || cant3 > 10){
+
+                javax.swing.JOptionPane.showMessageDialog(null,"La cantidad maxima por medicamento es 10");
+
+            }else{
+
+                boolean existe1 = false;
+                boolean existe2 = false;
+                boolean existe3 = false;
+
+                for(int i = 0; i < a.getMedicamentos().size(); i++){
+
+                    medicamento m = a.getMedicamentos().get(i);
+
+                    if(m.getNombreMedicamento().equalsIgnoreCase(tx_m1.getText())){
+
+                        existe1 = true;
+                    }
+
+                    if(m.getNombreMedicamento().equalsIgnoreCase(tx_m2.getText())){
+
+                        existe2 = true;
+                    }
+
+                    if(m.getNombreMedicamento().equalsIgnoreCase(tx_m3.getText())){
+
+                        existe3 = true;
+                    }
+                }
+
+                if(existe1 == false){
+
+                    javax.swing.JOptionPane.showMessageDialog(null,"El medicamento 1 no existe en inventario");
+
+                }else if(!tx_m2.getText().isEmpty() && existe2 == false){
+
+                    javax.swing.JOptionPane.showMessageDialog(null,"El medicamento 2 no existe en inventario");
+
+                }else if(!tx_m3.getText().isEmpty() && existe3 == false){
+
+                    javax.swing.JOptionPane.showMessageDialog(null,"El medicamento 3 no existe en inventario");
+
+                }else{
+
+                    String idConsulta = tx_id_receta.getText();
+
+                    String cedulaPaciente = "";
+
+                    for(int i = 0; i < a.getConsultas().size(); i++){
+
+                        Consulta c = a.getConsultas().get(i);
+
+                        if(c.getIdConsulta().equals(idConsulta)){
+
+                            cedulaPaciente = c.getCedulaPaciente();
+
+                            c.setCompletada(true);
+
+                            break;
+                        }
+                    }
+
+                    Receta r = new Receta(
+                        "R" + (a.getRecetas().size() + 1),
+                        cedulaPaciente,
+                        "Doctor",
+                        tx_m1.getText(),
+                        cant1,
+                        tx_m2.getText(),
+                        cant2,
+                        tx_m3.getText(),
+                        cant3
+                    );
+
+                    a.registrarReceta(r);
+
+                    a.actualizarConsulta();
+
+                    modeloRecetas.clear();
+
+                    modeloRecetas.addElement("ID: " + r.getIdReceta());
+
+                    modeloRecetas.addElement(
+                        r.getMedicamento1() +
+                        " Cantidad: " +
+                        r.getCantMedicamento1()
+                    );
+
+                    if(!r.getMedicamento2().isEmpty()){
+
+                        modeloRecetas.addElement(
+                            r.getMedicamento2() +
+                            " Cantidad: " +
+                            r.getCantMedicamento2()
+                        );
+                    }
+
+                    if(!r.getMedicamento3().isEmpty()){
+
+                        modeloRecetas.addElement(
+                            r.getMedicamento3() +
+                            " Cantidad: " +
+                            r.getCantMedicamento3()
+                        );
+                    }
+
+                    javax.swing.JOptionPane.showMessageDialog(null,"Receta creada");
+
+                    tx_m1.setText("");
+                    tx_m2.setText("");
+                    tx_m3.setText("");
+
+                    tx_cant_m1.setText("");
+                    tx_cant_m2.setText("");
+                    tx_cant_m3.setText("");
+
+                    jTabbedPane1.setSelectedIndex(0);
+                }
+            }
+        }
+    
+    }//GEN-LAST:event_boton_dar_recetaActionPerformed
+
+    private void tx_cant_m1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx_cant_m1KeyTyped
+char c=evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            evt.consume();
+            javax.swing.JOptionPane.showMessageDialog(null,"Solo puede digitar numeros");
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m1KeyTyped
+
+    private void tx_cant_m2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx_cant_m2KeyTyped
+char c=evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            evt.consume();
+            javax.swing.JOptionPane.showMessageDialog(null,"Solo puede digitar numeros");
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m2KeyTyped
+
+    private void tx_cant_m3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tx_cant_m3KeyTyped
+char c=evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            evt.consume();
+            javax.swing.JOptionPane.showMessageDialog(null,"Solo puede digitar numeros");
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tx_cant_m3KeyTyped
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+new usuario().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -140,20 +548,41 @@ public class Medico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_elegir_receta;
+    private javax.swing.JButton boton_dar_receta;
+    private javax.swing.JButton boton_elegir_cita;
+    private javax.swing.JButton boton_no_receta;
+    private javax.swing.JButton boton_si_receta;
     private javax.swing.JButton boton_ver_citas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField tx_cant_m1;
+    private javax.swing.JTextField tx_cant_m2;
+    private javax.swing.JTextField tx_cant_m3;
     private javax.swing.JTextField tx_id_receta;
+    private javax.swing.JTextField tx_m1;
+    private javax.swing.JTextField tx_m2;
+    private javax.swing.JTextField tx_m3;
     // End of variables declaration//GEN-END:variables
 }

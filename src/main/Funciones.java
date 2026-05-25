@@ -282,7 +282,7 @@ public class Funciones {
     public ArrayList<Farmaceuta> getFarmaceutas() { return farmaceutas; }
     public ArrayList<Receta> getRecetas() {return recetas;}
     public ArrayList<medicamento> getMedicamentos() {return medicamentos;}
-
+    public ArrayList<Consulta> getConsultas() {return consultas;}
 }
 
 
