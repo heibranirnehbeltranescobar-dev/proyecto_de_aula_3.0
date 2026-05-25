@@ -609,7 +609,7 @@ public class visual_Admin extends javax.swing.JFrame {
 
         try {
             int edad = Integer.parseInt(edadStr);
-            // Creamos el nuevo objeto Paciente y lo mandamos al ArrayList/Archivo por medio de Funciones
+            // Crea el nuevo objeto Paciente y lo mandamos al ArrayList/Archivo por medio de Funciones
             Paciente nuevoPaciente = new Paciente(cedula, nombre, edad);
             a.registrarPaciente(nuevoPaciente);
             
@@ -644,11 +644,11 @@ public class visual_Admin extends javax.swing.JFrame {
 
         try {
             int nuevaEdad = Integer.parseInt(nuevaEdadStr);
-            // Actualizamos los atributos del objeto encontrado
+            // Actualiza los atributos del objeto encontrado
             paciente.setNombre(nuevoNombre);
             paciente.setEdad(nuevaEdad);
             
-            // Guardamos los cambios permanentemente en el archivo de texto externo
+            // Guarda los cambios permanentemente en el archivo de texto externo
             a.guardarPacientes(); 
             
             actualizarListaUsuarios();
@@ -678,7 +678,7 @@ public class visual_Admin extends javax.swing.JFrame {
                 "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirmar == javax.swing.JOptionPane.YES_OPTION) {
-            // Removemos de las colecciones de Funciones y guardamos el estado del archivo limpio
+            // Remover de las colecciones de Funciones y guardamos el estado del archivo limpio
             a.getPacientes().remove(paciente);
             a.guardarPacientes();
             
@@ -697,7 +697,7 @@ public class visual_Admin extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.");
             return;
         }
-        // Validación crucial: evitar duplicar cédulas con otros farmaceutas
+        // Validación evitar duplicar cédulas con otros farmaceutas
         if (a.buscarFarmaceuta(cedula) != null) {
             javax.swing.JOptionPane.showMessageDialog(this, "Esta cédula ya le pertenece a un farmaceuta registrado.");
             return;
@@ -732,7 +732,7 @@ public class visual_Admin extends javax.swing.JFrame {
             int nuevaEdad = Integer.parseInt(nuevaEdadStr);
             far.setNombre(nuevoNombre);
             far.setEdad(nuevaEdad);
-            a.guardarFarmaceutas(); // Recuerda poner este método como public en Funciones
+            a.guardarFarmaceutas();
             actualizarListaFarmaceutas();
             limpiarCamposFarmaceuta();
             javax.swing.JOptionPane.showMessageDialog(this, "Datos del farmaceuta modificados con éxito.");
@@ -775,7 +775,6 @@ public class visual_Admin extends javax.swing.JFrame {
       String cedula = txt_cedula_doctor.getText().trim();
         String nombre = txt_nombre_doctor.getText().trim();
         String edadStr = txt_edad_doctor.getText().trim();
-        // Capturamos lo que el admin escriba como "especialidad" y lo tratamos como el "tipo"
         String tipoEspecialidad = txt_especialidad_doctor.getText().trim().toLowerCase(); 
 
         if (cedula.isEmpty() || nombre.isEmpty() || edadStr.isEmpty() || tipoEspecialidad.isEmpty()) {
@@ -783,14 +782,14 @@ public class visual_Admin extends javax.swing.JFrame {
             return;
         }
 
-        // VALIDACIÓN ESTRICTA
+    
         if (!tipoEspecialidad.equals("cardiologia") && !tipoEspecialidad.equals("dermatologia") 
             && !tipoEspecialidad.equals("pediatria") && !tipoEspecialidad.equals("cita general") && !tipoEspecialidad.equals("general")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Especialidad inválida.\nSolo se permite: Cardiologia, Dermatologia, Pediatria o Cita General.");
             return;
         }
         
-        // Si escribe "cita general", lo guardamos como "general" en el sistema
+       
         if (tipoEspecialidad.equals("cita general")) {
             tipoEspecialidad = "general";
         }
@@ -801,7 +800,7 @@ public class visual_Admin extends javax.swing.JFrame {
         }
         try {
             int edad = Integer.parseInt(edadStr);
-            // PASAMOS 4 PARÁMETROS: tipo, cedula, nombre, edad (Tal cual lo tienes en Funciones)
+           
             Doctor nuevoDoc = new Doctor(tipoEspecialidad, cedula, nombre, edad);
             a.registrarDoctor(nuevoDoc);
             
@@ -843,7 +842,7 @@ public class visual_Admin extends javax.swing.JFrame {
             int nuevaEdad = Integer.parseInt(nuevaEdadStr);
             doc.setNombre(nuevoNombre);
             doc.setEdad(nuevaEdad);
-            doc.setTipo(nuevoTipo); // Actualizamos el tipo directamente
+            doc.setTipo(nuevoTipo); 
             
             a.guardarDoctores(); 
             actualizarListaDoctores();
